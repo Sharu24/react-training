@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"
+        integrity="sha512-kp7YHLxuJDJcOzStgd6vtpxr4ZU9kjn77e6dBsivSz+pUuAuMlE2UTdKB7jjsWT84qbS8kdCWHPETnP/ctrFsA=="
+        crossorigin="anonymous"></script>
+    <title>Todo List</title>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+
+    const TodoList = (props) => {
+        const todoItems = props.todoItems;
+        const todoList = todoItems.length > 0 && todoItems.map(td => {
+            return (
+                <li key={td.id}>{td.todo}</li>
+            )
+        })
+        return (
+            <div>
+                <ul>{todoList}</ul>
+            </div>
+        )
+    }
+
+    const todoItems = [{ id: 1, todo: "breakfast" }, { id: 2, todo: "lunch" }]
+    ReactDOM.render(<TodoList todoItems={todoItems} />, document.getElementById("root"));
+</script>
+
+</html>

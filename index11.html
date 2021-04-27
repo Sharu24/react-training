@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"
+        integrity="sha512-pBSlhNUvB+td6sjW1zmR6L7c7kVWR4octUPl4tfHmzO63424nxta8aLmficEcAAswQmRqTiToi63AazDurj/Sg=="
+        crossorigin="anonymous"></script>
+
+    <title>React Login Example</title>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+    class Greeting extends React.Component {
+        render() {
+            const isloggedIn = this.props.isloggedIn;
+            const welcomeMessage = "Welcome User";
+            const goodbyeMessage = 'User Successfully logged out';
+            return isloggedIn ? <h1>{welcomeMessage}</h1> : <h1>{goodbyeMessage}</h1>;
+        }
+    }
+
+    class LoginButton extends React.Component {
+        render() {
+            let handleLogin = this.props.handleLogin;
+            return(
+                <button onClick={handleLogin}>Login</button>
+            )
+        }
+    }
+
+    class LogoutButton extends React.Component {
+        render() {
+            let handleLogout = this.props.handleLogout;
+            return(
+                <button onClick={handleLogout}>Logout</button>
+            )
+        }
+    }
+
+    class LoginControl extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                isloggedIn: true
+            }
+        }
+
+        handleLogin = (e) => {
+            e.preventDefault();
+            this.setState({isloggedIn: true})
+        }
+
+        handleLogout = (e) => {
+            e.preventDefault();
+            this.setState({isloggedIn: false})
+        }
+
+        render() {
+            let isloggedIn = this.state.isloggedIn;
+            let loginBtn = <LoginButton handleLogin={this.handleLogin} />;
+            let logoutBtn = <LogoutButton handleLogout={this.handleLogout} /> 
+            let button = !isloggedIn ? loginBtn : logoutBtn
+
+            return(
+                <React.Fragment>
+                    <Greeting isloggedIn={isloggedIn} />
+                    {button}
+                </React.Fragment>
+            )
+        }
+    }
+
+    ReactDOM.render(<LoginControl />, document.getElementById("root"))
+</script>
+
+</html>

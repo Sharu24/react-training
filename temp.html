@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .root {
+            display: block;
+            position: relative;
+        }
+
+        .one {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 10rem;
+            width: 10rem;
+            background-color: red;
+        }
+
+        .two {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            height: 10rem;
+            width: 10rem;
+            background-color: green;
+        }
+
+        .three {
+            position: absolute;
+            top: 4rem;
+            left: 4rem;
+            height: 10rem;
+            width: 10rem;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="root">
+        <div class="one"></div>
+        <div class="two"></div>
+        <div class="three"></div>
+    </div>
+    <br /> <br />
+    <div id="output"></div>
+    <button onClick="handleClick()">Click Me</button>
+</body>
+<script>
+
+    function handleClick() {
+        console.log("Clicked me");
+        const out = document.getElementById("output");
+        out.innerHTML = "<h1>Button Is Clicked</h1>"
+    }
+</script>
+
+</html>
